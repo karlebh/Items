@@ -41,7 +41,7 @@ const Header = () => {
               </svg>
             </Link>
 
-            <button className='mx-2 font-semibold'>Category</button>
+            <button className='mx-2 font-semibold' onclick={() => setNavBarOpen(!NavBarOpen}>Category</button>
             <Link to="/wishlist" className='mx-2 font-semibold'>Wishlist</Link>
 
             <Link className='font-semibold bg-lime-600 pl-1 pr-3 py-1 rounded-md text-gray-100 ml-2 hover:border-red-600' to="addProduct">
