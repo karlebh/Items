@@ -9,6 +9,7 @@ const StoreContextProvider = (props) => {
   const [items, setItem] = useState([])
   const [categories, setCategories] = useState([])
   const [NavBarOpen, setNavBarOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     getProducts()
@@ -27,11 +28,13 @@ const StoreContextProvider = (props) => {
       setCategories(categories)
       
     } else {
+      setLoading(true)
       await axios.get("https://fakestoreapi.com/products")
         .then((res) => {
           let data = res.data
           localStorage.setItem('products', JSON.stringify(data))
           setItem(data)
+          setLoading(false)
           data.forEach(product => {
             if (! categories.includes(product.category)) categories.push(product.category)
           })
@@ -115,7 +118,8 @@ const StoreContextProvider = (props) => {
       addItem,
       findItem,
       setNavBarOpen,
-      sortByCategory
+      sortByCategory,
+      loading
     }}
   >
     {props.children}
