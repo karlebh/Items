@@ -13,7 +13,7 @@ const Cart = () => {
 
   return (
     <>
-      <div className='w-full flex flex-col'>
+      <div className='w-full flex flex-col text-gray-200'>
         <div className={`p-4 w-full ${modal ? 'lg:w-8/12' : 'lg:w-full'}`}>
           <div className='flex justify-between items-baseline mb-2'>
             <h1 className='lg:text-3xl font-medium italic'>Your Shopping Cart</h1>
@@ -26,10 +26,10 @@ const Cart = () => {
             {cart.length ?
               cart.map((item, id) => (
                 <div
-                  className='grid gap-y-4 grid-cols-2 lg:grid-cols-6 items-center justify-items-center my-4 py-3 bg-gray-400 px-2 relative'
+                  className='grid gap-y-4 grid-cols-2 lg:grid-cols-6 items-center justify-items-center my-4 py-3 bg-stone-800 px-2 relative rounded-md  overflow-hidden'
                   key={id}>
                   <div className='grid w-full col-span-2 lg:col-span-1 justify-items-center'>
-                    <img src={item.image} className='self-items-center w-20 h-20 rounded-full object-contain' alt="" />
+                    <img src={item.image} className='w-full h-40 md:w-20 md:h-20 md:rounded-full object-contain' alt="" />
                   </div>
 
                   <div className='col-span-2 self-items-left w-full grid'>
@@ -64,7 +64,7 @@ const Cart = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
-                  <button onClick={() => remove(item)} className='absolute right-0 bg-slate-500 top-0 p-1 lg:hidden'>
+                  <button onClick={() => remove(item)} className='absolute right-0 bg-slate-500 top-0 p-1 lg:hidden rounded-l-md'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -89,17 +89,17 @@ const Cart = () => {
 
             <br className='sm:hidden' />
 
-            <div><span className='mr-4 capitalize'>subtotal: </span><span className='font-bold text-2xl text-gray-100'>${subTotal.toFixed(2)}</span></div>
+            <div><span className='mr-4 capitalize'><span className='font-semibold text-2xl'>Total:</span> </span><span className='font-bold text-2xl text-gray-100'>${subTotal.toFixed(2)}</span></div>
           </div>
         </div>
 
         <div className='bg-stone-800 shadow-xl text-gray-100 p-4 lg:hidden rounded-md'>
           <div className="mt-32">
             <h1 className='text-3xl mb-5'>Checkout</h1>
-            <Checkout total={subTotal} />
+            {/* <Checkout total={subTotal} /> */}
           </div>
         </div>
-    
+
 
         {modal &&
           (<div className='w-4/12 bg-stone-800 fixed right-0 top-0 h-screen shadow-xl text-gray-100 p-4 hidden lg:block'>
@@ -111,12 +111,12 @@ const Cart = () => {
 
             <div className="mt-32">
               <h1 className='text-3xl mb-5'>Checkout</h1>
-              <Checkout total={subTotal} />
+              {/* <Checkout total={subTotal} /> */}
             </div>
 
           </div>)}
       </div>
-     
+
     </>
   )
 }

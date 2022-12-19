@@ -20,11 +20,9 @@ export default () => {
       <div className='hidden md:flex lg:-mt-10 justify-center'>
         <Swiper
           modules={[A11y, Autoplay, Navigation]}
-          spaceBetween={10}
-          slidesPerView={3}
+          slidesPerView={1}
           navigation
           autoplay={true}
-          pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           effect="fade"
           height={300}
@@ -32,7 +30,13 @@ export default () => {
         >
           {items.slice(0, 7).map(item => <SwiperSlide key={item.id}>
             <Link to={`product/${item.id}`}>
-              <img src={item.image} alt="" className='rounded-md' style={{ height: '300px', width: '300px' }} />
+              <img src={item.image} alt="" className='rounded-md' style={{
+                height: '550px',
+                width: '100vw',
+                // objectFit: 'cover',
+                objectPosition: 'center',
+                backgroundSize: '100%'
+              }} />
             </Link>
           </SwiperSlide>)}
 

@@ -9,7 +9,7 @@ const Footer = () => {
     <div className=''>
       {/* mobile footer */}
 
-      <div className='bg-zinc-600 min-h-32 w-full 
+      <div className='bg-stone-800 min-h-32 w-full 
     text-gray-200 py-5 px-10 flex flex-col sm:flex-row justify-between items-center text-left lg:hidden'>
         <div className='flex items-center self-start sm:mt-4'>
           <div>
@@ -49,7 +49,7 @@ const Footer = () => {
 
 
       {/* desktop footer */}
-      <div className='bg-zinc-600 min-h-32 w-full 
+      <div className='bg-stone-800  min-h-32 w-full 
     text-gray-200 py-5 px-10 hidden lg:flex justify-between items-center text-left'>
         <div className='flex items-center'>
           <div>

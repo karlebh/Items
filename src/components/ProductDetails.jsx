@@ -35,7 +35,7 @@ const ProductDetails = () => {
 
 
   return (
-    <div className='w-10/12 mx-auto'>
+    <div className='w-10/12 mx-auto text-gray-200'>
       <div className='grid md:grid-cols-2 p-4 gap-x-5'>
         <div>
           <img src={product.image} className='h-96 w-full object-fill object-center rounded-md' alt="" />
@@ -55,12 +55,12 @@ const ProductDetails = () => {
           </div>
 
           <div className='py-3'>
-            <button onClick={() => decrementQty()} className="px-2 py-1 bg-gray-300 text-gray-800 mr-2 rounded">-</button>
+            <button onClick={() => decrementQty()} className="px-2 py-1 bg-gray-800 hover:bg-gray-700 transition duration-500 mr-2 rounded">-</button>
             <input type="number" max="25"
               className='border-lime-400 border-b-2 outline-none w-[40%]
-             sm:w-[20%] text-center px-2 py-1 bg-gray-100 focus:hover:bg-gray-200 
+             sm:w-[20%] text-center px-2 py-1 bg-gray-100 focus:hover:bg-gray-200 text-gray-900
               placeholder:text-sm placeholder:lowercase' value={qty} onChange={(e) => incrementQty(Number(e.target.value))} />
-            <button onClick={() => incrementQty()} className="px-2 py-1 bg-gray-300 text-gray-800 ml-2 rounded">+</button>
+            <button onClick={() => incrementQty()} className="px-2 py-1 bg-gray-800 hover:bg-gray-700 transition duration-500 ml-2 rounded">+</button>
           </div>
 
 
@@ -72,7 +72,7 @@ const ProductDetails = () => {
 
 
           <div className='flex items-center gap-x-4 mt-3'>
-            <button className='px-4 py-2 bg-gray-400 rounded-md' onClick={() => {
+            <button className='px-4 py-2 bg-gray-800 hover:bg-gray-700 transition duration-500 rounded-md' onClick={() => {
               add(product, 1);
               alert.classList.replace('hidden', 'inline-flex')
               gsap.from('#alert', { y: 30 })

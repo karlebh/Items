@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import StarRating from './StarRating'
 import { CartContext } from '../context/CartContext'
@@ -9,13 +9,14 @@ const Products = ({ product }) => {
 
   const { add } = useContext(CartContext)
   const { toggleLike, wishlistIds } = useContext(WishlistContext)
+  const location = useLocation()
 
   let alert = document.getElementById('alert')
 
   return (
     <div>
       {
-        <div className='relative flex flex-col xl:flex-row xl:items-center justify-evenly'>
+        <div className='relative flex flex-col xl:flex-row xl:items-center justify-evenly text-gray-300'>
           <Link to={`/product/${product.id}`}>
             <div className='flex justify-center'>
               <img src={product.image} className="object-fit my-2 rounded-md w-[24rem] lg:w-[20rem] h-[15rem] sm:h-[20rem] " alt="" />
@@ -23,7 +24,8 @@ const Products = ({ product }) => {
           </Link>
 
           <div className='rounded-sm my-4 py-2 px-2 flex flex-col items-center text-center'>
-            <p className='font-semibold truncate ... w-[10rem] md:w-[13rem]' title={product.title}>{product.title} </p>
+            <p className={`font-semibold truncate ... w-[10rem] md:w-[13rem]
+             ${location.pathname === '/wishlist' ? 'lg:w-[40rem]' : 'lg:w-[20rem]'}`} title={product.title}>{product.title} </p>
             <span className='font-semibold text-md'>${product.price}</span>
             <div>
               <div className='flex items-center gap-x-4'>
@@ -35,7 +37,7 @@ const Products = ({ product }) => {
             </div>
 
             <div className='flex items-center gap-x-4 mt-3'>
-              <button className='px-4 py-2 bg-gray-400 rounded-md' onClick={() => {
+              <button className='px-4 py-2 bg-gray-800 hover:bg-gray-700 transition duration-500 rounded-md font-semibold' onClick={() => {
                 add(product, 1);
                 alert.classList.replace('hidden', 'inline-flex')
                 gsap.from('#alert', { y: 30 })
