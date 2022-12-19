@@ -16,7 +16,8 @@ const Products = ({ product }) => {
   return (
     <div>
       {
-        <div className='relative flex flex-col xl:flex-row xl:items-center justify-evenly text-gray-300'>
+        <div className={`relative flex flex-col ${location.pathname === '/wishlist' ? 'md:flex-row' : 'xl:flex-row'} 
+        xl:items-center justify-evenly text-gray-300`}>
           <Link to={`/product/${product.id}`}>
             <div className='flex justify-center'>
               <img src={product.image} className="object-fit my-2 rounded-md w-[24rem] lg:w-[20rem] h-[15rem] sm:h-[20rem] " alt="" />
