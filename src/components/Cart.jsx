@@ -96,7 +96,7 @@ const Cart = () => {
         <div className='bg-stone-800 shadow-xl text-gray-100 p-4 lg:hidden rounded-md'>
           <div className="mt-32">
             <h1 className='text-3xl mb-5'>Checkout</h1>
-            {/* <Checkout total={subTotal} /> */}
+            <Checkout total={subTotal} />
           </div>
         </div>
 
@@ -111,7 +111,7 @@ const Cart = () => {
 
             <div className="mt-32">
               <h1 className='text-3xl mb-5'>Checkout</h1>
-              {/* <Checkout total={subTotal} /> */}
+              <Checkout total={subTotal} />
             </div>
 
           </div>)}
