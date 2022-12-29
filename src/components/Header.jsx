@@ -9,7 +9,7 @@ const Header = () => {
   const { NavBarOpen, setNavBarOpen, categories } = useContext(StoreContext)
   const { cart } = useContext(CartContext)
   const itemCount = cart.length
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   const nav = document.getElementById('nav')
 
@@ -46,8 +46,10 @@ const Header = () => {
               </svg>
             </Link>
 
-            <button className='mx-2 font-semibold' onClick={() => setNavBarOpen(!NavBarOpen)}>Category</button>
-            <Link to="/wishlist" className='mx-2 font-semibold'>Wishlist</Link>
+            <button className={`mx-2 font-semibold ${NavBarOpen ? 'font-bold text-md' : ''}`}
+
+             onClick={() => setNavBarOpen(!NavBarOpen)}>Category</button>
+            <Link to="/wishlist" className={`mx-2 font-semibold ${pathname === '/wishlist' ? 'font-bold text-md underline' : ''}`}>Wishlist</Link>
 
             <Link className='font-semibold bg-lime-600 pl-1 pr-3 py-1 rounded-md ml-2 hover:border-red-600' to="addProduct">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="inline w-7 h-7 mb-1 font-bold">
@@ -85,7 +87,7 @@ const Header = () => {
           <Link
             onClick={toggleMenu}
             className={`mt-20 font-semibold capitalize
-           px-3 py-2 ${location.pathname.replace('%20', ' ').replace('/', '') === 'cart' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="cart">
+           px-3 py-2 ${pathname.replace('%20', ' ').replace('/', '') === 'cart' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="cart">
             <div className="relative w-12">
               Cart
               {itemCount ? <span className='text-lime-400 text-[.6rem] w-4 h-4 text-center rounded-full absolute -right-1 -top-1 bg-gray-900 '>{itemCount}</span> : ''}
@@ -94,14 +96,15 @@ const Header = () => {
           {categories.map((cat, id) => (
             <Link
               key={id}
-              className={`font-semibold capitalize  px-3 py-2 ${location.pathname.replace('%20', ' ').replace('/', '') === cat ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`}
+              className={`font-semibold capitalize  px-3 py-2 ${pathname.replace('%20', ' ').replace('/', '') === cat ? 
+              'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`}
               to={`/${cat}`}
               onClick={toggleMenu}
             >{cat}</Link>))}
           <Link onClick={toggleMenu} className={`font-semibold capitalize  px-3 py-2
-             ${location.pathname.replace('%20', ' ').replace('/', '') === 'wishlist' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="wishlist">Wishlist</Link>
+             ${pathname.replace('%20', ' ').replace('/', '') === 'wishlist' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="wishlist">Wishlist</Link>
           <Link onClick={toggleMenu} className={`font-semibold capitalize  px-3 py-2
-             ${location.pathname.replace('%20', ' ').replace('/', '') === 'addProduct' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="addProduct">Add product</Link>
+             ${pathname.replace('%20', ' ').replace('/', '') === 'addProduct' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="addProduct">Add product</Link>
           <Link to="/pagination" className='mx-2 font-semibold' onClick={toggleMenu}>Pagination</Link>
         </div>
       </nav>

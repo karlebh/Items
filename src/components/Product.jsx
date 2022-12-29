@@ -4,20 +4,23 @@ import { Link, useLocation } from 'react-router-dom'
 import StarRating from './StarRating'
 import { CartContext } from '../context/CartContext'
 import { WishlistContext } from '../context/WishlistContext'
+import { StoreContext } from '../context/StoreContext'
 
 const Products = ({ product }) => {
 
   const { add } = useContext(CartContext)
   const { toggleLike, wishlistIds } = useContext(WishlistContext)
-  const location = useLocation()
+  const { categories } = useContext(StoreContext)
+  const { pathname } = useLocation()
 
   let alert = document.getElementById('alert')
+  let changeCSS = (pathname === '/wishlist' || categories.includes(pathname.replace('%20', ' ').replace('/', ''))) ? 'md:flex-row' : 'xl:flex-row'
 
   return (
     <div>
       {
-        <div className={`relative flex flex-col ${location.pathname === '/wishlist' ? 'md:flex-row' : 'xl:flex-row'} 
-        xl:items-center justify-evenly text-gray-300`}>
+        <div className={`relative flex flex-col ${changeCSS} 
+        md:items-center justify-evenly text-gray-300`}>
           <Link to={`/product/${product.id}`}>
             <div className='flex justify-center'>
               <img src={product.image} className="object-fit my-2 rounded-md w-[24rem] lg:w-[20rem] h-[15rem] sm:h-[20rem] " alt="" />
@@ -26,7 +29,7 @@ const Products = ({ product }) => {
 
           <div className='rounded-sm my-4 py-2 px-2 flex flex-col items-center text-center'>
             <p className={`font-semibold truncate ... w-[10rem] md:w-[13rem]
-             ${location.pathname === '/wishlist' ? 'lg:w-[40rem]' : 'lg:w-[20rem]'}`} title={product.title}>{product.title} </p>
+             ${pathname === '/wishlist' ? 'lg:w-[40rem]' : 'lg:w-[20rem]'}`} title={product.title}>{product.title} </p>
             <span className='font-semibold text-md'>${product.price}</span>
             <div>
               <div className='flex items-center gap-x-4'>
