@@ -8,6 +8,7 @@ import Pagination from '../components/Pagination'
 import Home from './Home'
 import Wishlist from '../components/Wishlist'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import ScrollToTop from '../helpers/scrollToTop'
 
 const Pages = () => {
   let location = useLocation();
@@ -18,7 +19,9 @@ const Pages = () => {
         classNames="fade"
         timeout={300}
       >
+        
         <Routes location={location}>
+    
           <Route path='/' element={<Home />} />
           <Route path='/addProduct' element={<AddProduct />} />
           <Route path='/pagination' element={<Pagination />} />

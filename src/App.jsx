@@ -6,15 +6,16 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Pages from './pages/Pages'
 import Notice from './components/Notice'
+import ScrollToTop from './helpers/scrollToTop'
 
 window.gsap = gsap
 
 function App() {
 
   return (
-    // <div className="bg-gradient-to-r from-emerald-700 via-teal-700 to-lime-700">
     <div className="bg-gradient-to-r from-emerald-700 to-teal-700 max-w-[3000px] mx-auto">
       <BrowserRouter>
+      <ScrollToTop/>
         <div className="min-h-screen">
           <Header />
           <Notice />

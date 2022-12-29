@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 body {
   /* position: relative; */
   font-family: 'Noto Sans', sans-serif;

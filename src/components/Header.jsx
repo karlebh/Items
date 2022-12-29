@@ -45,11 +45,7 @@ const Header = () => {
               </svg>
             </Link>
 
-<<<<<<< HEAD
             <button className='mx-2 font-semibold' onClick={() => setNavBarOpen(!NavBarOpen)}>Category</button>
-=======
-            <button className='mx-2 font-semibold' onclick={() => setNavBarOpen(!NavBarOpen}>Category</button>
->>>>>>> 707815b0890ec1dd47dbca29ba169b45e2ef8f1a
             <Link to="/wishlist" className='mx-2 font-semibold'>Wishlist</Link>
 
             <Link className='font-semibold bg-lime-600 pl-1 pr-3 py-1 rounded-md ml-2 hover:border-red-600' to="addProduct">
