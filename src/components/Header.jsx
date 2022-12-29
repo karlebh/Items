@@ -6,24 +6,25 @@ import { CartContext } from '../context/CartContext'
 
 const Header = () => {
 
-  const [open, setOpen] = useState(false)
   const { NavBarOpen, setNavBarOpen, categories } = useContext(StoreContext)
   const { cart } = useContext(CartContext)
   const itemCount = cart.length
   const location = useLocation()
 
-  let nav = document.getElementById('nav')
+  const nav = document.getElementById('nav')
 
   function toggleMenu() {
-    // setNavBarOpen(!NavBarOpen)
-    if (nav.classList.contains('w-0')) nav.classList.replace('w-0', 'w-screen')
-    else nav.classList.replace('w-screen', 'w-0')
-
-    let div = nav.querySelector('div')
-    if (div.classList.contains('w-0')) div.classList.replace('w-0', 'w-3/4')
-    else div.classList.replace('w-3/4', 'w-0')
-
-    setOpen((open) => !open)
+    if (nav.classList.contains('out')) {
+      nav.classList.replace('hidden', 'block')
+      nav.classList.remove('out')
+      nav.classList.add('in')
+      return
+    }
+    nav.classList.remove('in')
+    nav.classList.add('out')
+    setTimeout(() => {
+      nav.classList.replace('block', 'hidden')
+    }, 200)
   }
 
   return (
@@ -64,6 +65,7 @@ const Header = () => {
 
 
         <div className='md:hidden'>
+          {/* <button onClick={toggleMenu}> */}
           <button onClick={toggleMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -73,8 +75,8 @@ const Header = () => {
       </header>
 
       {/* Mobile Nav */}
-      <nav className='inset-0 w-0 h-full fixed z-30 bg-opacity-50 bg-gray-600 transition-all duration-500 ease' id='nav'>
-        <div className='flex flex-col bg-gray-300 text-gray-800 h-full w-0 overflow-hidden transition-all duration-700 ease'>
+      <nav className='inset-0 w-full h-full fixed z-10 hidden out' id='nav'>
+        <div className='flex flex-col bg-gray-300 text-gray-800 h-full w-full overflow-hidden'>
           <button className='self-end p-4' onClick={toggleMenu}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-8 h-8 text-gray-900">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -102,8 +104,8 @@ const Header = () => {
              ${location.pathname.replace('%20', ' ').replace('/', '') === 'addProduct' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="addProduct">Add product</Link>
           <Link to="/pagination" className='mx-2 font-semibold' onClick={toggleMenu}>Pagination</Link>
         </div>
-
       </nav>
+
     </div>
 
 
