@@ -29,8 +29,9 @@ const Cart = () => {
                 <div
                   className='grid gap-y-4 grid-cols-2 lg:grid-cols-6 items-center justify-items-center my-4 py-3 bg-stone-800 px-2 relative rounded-md  overflow-hidden'
                   key={id}>
+                   
                   <div className='grid w-full col-span-2 lg:col-span-1 justify-items-center'>
-                    <img src={item.image} className='w-full h-40 md:w-20 md:h-20 md:rounded-full object-contain' alt="" />
+                    <img src={item.image} className='hidden lg:block w-full h-40 md:w-20 md:h-20 md:rounded-full object-contain' alt="" />
                   </div>
 
                   <div className='col-span-2 self-items-left w-full grid'>

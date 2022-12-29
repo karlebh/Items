@@ -17,7 +17,7 @@ const Products = ({ product }) => {
   let changeCSS = (pathname === '/wishlist' || categories.includes(pathname.replace('%20', ' ').replace('/', ''))) ? 'md:flex-row' : 'xl:flex-row'
 
   return (
-    <div>
+    <div className=''>
       {
         <div className={`relative flex flex-col ${changeCSS} 
         md:items-center justify-evenly text-gray-300`}>
