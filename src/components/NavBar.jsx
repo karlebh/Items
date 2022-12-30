@@ -20,8 +20,6 @@ const NavBar = () => {
             to={`/${cat}`}
             onClick={() => { setNavBarOpen(false); setActive(true) }}
           >{cat}</Link>))}
-        <Link to="/pagination" className={`font-medium capitalize hover:bg-gray-300 px-3 py-2 
-            ${pathname === '/pagination' ? 'bg-lime-500 hover:bg-lime-500' : ''}`} onClick={() => { setNavBarOpen(false); setActive(true) }}>Pagination</Link>
       </div>
     </>
   )

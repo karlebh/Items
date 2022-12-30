@@ -12,13 +12,18 @@ const Cart = () => {
   })
   const payDiv = document.getElementById('modal')
 
+
   return (
     <>
       <div className='w-full flex flex-col text-gray-200'>
         <div className={`p-4 w-full ${modal ? 'lg:w-8/12' : 'lg:w-full'}`}>
           <div className='flex justify-between items-baseline mb-2'>
             <h1 className='lg:text-3xl font-medium italic'>Your Shopping Cart</h1>
-            <button onClick={() => setModal(true)} className="inline-flex item-center font-semibold">
+            <button onClick={() => setModal(true)} className="hidden lg:selection:inline-flex item-center font-semibold">
+              <img src="https://cdn.iconscout.com/icon/free/png-256/checkout-1553147-1314013.png" alt="" className='w-5 h-5 mr-2' />
+              Checkout
+            </button>
+            <button onClick={() => document.getElementById('checkout').scrollIntoView({ behavior: 'smooth', block: 'end' })} className="inline-flex lg:hidden item-center font-semibold">
               <img src="https://cdn.iconscout.com/icon/free/png-256/checkout-1553147-1314013.png" alt="" className='w-5 h-5 mr-2' />
               Checkout
             </button>
@@ -27,12 +32,14 @@ const Cart = () => {
             {cart.length ?
               cart.map((item, id) => (
                 <div
-                  className='grid gap-y-4 grid-cols-2 lg:grid-cols-6 items-center justify-items-center my-4 py-3 bg-stone-800 px-2 relative rounded-md  overflow-hidden'
+                  className='mt-10 grid gap-y-4 grid-cols-2 lg:grid-cols-6 items-center justify-items-center my-4 py-3 bg-stone-800 px-2 relative rounded-md  overflow-hidden'
                   key={id}>
-                   
-                  <div className='grid w-full col-span-2 lg:col-span-1 justify-items-center'>
-                    <img src={item.image} className='hidden lg:block w-full h-40 md:w-20 md:h-20 md:rounded-full object-contain' alt="" />
+                   <div className='grid w-full col-span-2 lg:col-span-1 justify-items-center'>
+                    <img src={item.image} className='w-full h-56 md:h-72' alt="" />
                   </div>
+                  {/* <div className='grid w-full col-span-2 lg:col-span-1 justify-items-center'>
+                    <img src={item.image} className='hidden lg:block w-full h-40 md:w-20 md:h-20 md:rounded-full object-contain' alt="" />
+                  </div> */}
 
                   <div className='col-span-2 self-items-left w-full grid'>
                     <p className='flex items-start justify-start' >{item.title}</p>
@@ -94,8 +101,9 @@ const Cart = () => {
             <div><span className='mr-4 capitalize'><span className='font-semibold text-2xl'>Total:</span> </span><span className='font-bold text-2xl text-gray-100'>${subTotal.toFixed(2)}</span></div>
           </div>
         </div>
-
-        <div className='bg-stone-800 shadow-xl text-gray-100 p-4 lg:hidden rounded-md'>
+        
+        {/* Checkout for mobile */}
+        <div id='checkout' className='bg-stone-800 shadow-xl text-gray-100 p-4 lg:hidden rounded-md'>
           <div className="mt-32">
             <h1 className='text-3xl mb-5'>Checkout</h1>
             <Checkout total={subTotal} />

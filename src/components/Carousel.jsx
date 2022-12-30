@@ -7,9 +7,7 @@ import { Link } from 'react-router-dom';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/autoplay'
-import "swiper/css/navigation";
 import 'swiper/css/effect-fade';
-// import 'swiper/css/pagination';
 
 export default () => {
 
@@ -44,7 +42,7 @@ export default () => {
         </Swiper>
       </div>
 
-      <div className='md:hidden lg:-mt-10'>
+      <div className='md:hidden lg:-mt-10 flex justify-center'>
         <Swiper
           modules={[A11y, Autoplay, Navigation]}
           spaceBetween={10}

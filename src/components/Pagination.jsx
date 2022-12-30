@@ -50,23 +50,23 @@ const Pagination = () => {
   }
   return (
     <div className='in'>
-      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20">
-        {/* {loading && items.length === 0 ?
-          [1, 2, 3, 4].map((id) => <Skeleton key={id} height="20px" count={3} />)
-          : items.map(item => <Product key={item.id} product={item}></Product>)} */}
-        {products.slice(first, last).map((item, id) => <Product key={id} product={item}></Product>)}
+      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20 snap-x snap-mandatory overflow-scroll">
+        {loading && items.length === 0 ?
+          [1, 2, 3, 4].map((id) => <Skeleton key={id} height={`60%`} width={`100%`} count={3} />)
+          : products.slice(first, last)(item => <Product key={item.id} product={item}></Product>)}
+        {/* {products.slice(first, last).map((item, id) => <Product key={id} product={item}></Product>)} */}
       </div>
 
       <br />
       <br />
       <div className="flex justify-between items-center">
 
-        {currPage >= 2 ? <a href="#main" id="header"><button className='text-gray-50  transition duration-300 text-4xl font-semibold' onClick={() => prev()}>
+        {currPage >= 2 ? <a href="#header"><button className='text-gray-50  transition duration-300 text-4xl font-semibold' onClick={() => prev()}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20">
             <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button></a> : <button></button>}
-        {currPage === totalPages ? <button></button> : <a href="#main" id="header"><button className='text-gray-50  transition duration-300 ml-10 text-4xl font-semibold' onClick={() => next()}>
+        {currPage === totalPages ? <button></button> : <a href="#header"><button className='text-gray-50  transition duration-300 ml-10 text-4xl font-semibold' onClick={() => next()}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
