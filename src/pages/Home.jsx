@@ -21,9 +21,8 @@ const Home = () => {
     <div id='main'>
       <ReactPlaceholder showLoadingAnimation  type='media' rows={7} ready={!loading} customPlaceholder={awesomePlaceholder}>
         <Carousel />
-        
+        <Pagination />
       </ReactPlaceholder>
-      <Pagination />
     </div>
   )
 }
