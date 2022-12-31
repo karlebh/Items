@@ -3,7 +3,7 @@ import { StoreContext } from '../context/StoreContext'
 import Product from './Product'
 
 const Pagination = () => {
-  const { items, loading } = useContext(StoreContext)
+  const { items } = useContext(StoreContext)
   const [first, setFirst] = useState(0)
   const [last, setLast] = useState(8)
   let perPage = 8, range = 5, start = 1
@@ -51,26 +51,26 @@ const Pagination = () => {
   }
   return (
     <div className=''>
-      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20 overflow-scroll">
+      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20">
         {items.slice(first, last).map((item, id) => <Product key={item.id} product={item}></Product>)}
       </div>
 
       <br />
       <br />
 
-      {loading && <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center">
 
-        {currPage >= 2 ? <a href="#header"><button className='text-gray-50  transition duration-300 text-4xl font-semibold' onClick={() => prev()}>
+        {currPage >= 2 ? <a href="#header"><button className='text-gray-50  text-4xl font-semibold' onClick={() => prev()}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20">
             <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button></a> : <button></button>}
-        {currPage === totalPages ? <button></button> : <a href="#header"><button className='text-gray-50  transition duration-300 ml-10 text-4xl font-semibold' onClick={() => next()}>
+        {currPage === totalPages ? <button></button> : <a href="#header"><button className='text-gray-50  ml-10 text-4xl font-semibold' onClick={() => next()}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button></a>}
-      </div>}
+      </div>
 
 
 
