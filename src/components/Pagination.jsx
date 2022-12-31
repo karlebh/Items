@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { StoreContext } from '../context/StoreContext'
 import Product from './Product'
 
 const Pagination = () => {
-  const [products, setProducts] = useState(JSON.parse(localStorage.products))
+  const { items, loading } = useContext(StoreContext)
   const [first, setFirst] = useState(0)
   const [last, setLast] = useState(8)
   let perPage = 8, range = 5, start = 1
-  let totalPages = Math.ceil(products.length / perPage)
+  let totalPages = Math.ceil(items.length / perPage)
   let [currPage, setPage] = useState(1)
   let [links, setLinks] = useState([])
 
@@ -49,17 +50,15 @@ const Pagination = () => {
     pageLinks()
   }
   return (
-    <div className='in'>
-      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20 snap-x snap-mandatory overflow-scroll">
-        {loading && items.length === 0 ?
-          [1, 2, 3, 4].map((id) => <Skeleton key={id} height={`60%`} width={`100%`} count={3} />)
-          : products.slice(first, last)(item => <Product key={item.id} product={item}></Product>)}
-        {/* {products.slice(first, last).map((item, id) => <Product key={id} product={item}></Product>)} */}
+    <div className=''>
+      <div className="text-gray-50 grid grid-cols-1 sm:grid-cols-2 gap-x-8 mt-20 overflow-scroll">
+        {items.slice(first, last).map((item, id) => <Product key={item.id} product={item}></Product>)}
       </div>
 
       <br />
       <br />
-      <div className="flex justify-between items-center">
+
+      {loading && <div className="flex justify-between items-center">
 
         {currPage >= 2 ? <a href="#header"><button className='text-gray-50  transition duration-300 text-4xl font-semibold' onClick={() => prev()}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20">
@@ -71,7 +70,8 @@ const Pagination = () => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button></a>}
-      </div>
+      </div>}
+
 
 
     </div>

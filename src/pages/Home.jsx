@@ -1,24 +1,28 @@
 import React, { useContext } from 'react'
 import { StoreContext } from '../context/StoreContext'
-import Product from '../components/Product'
 import Carousel from '../components/Carousel'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
 import Pagination from '../components/Pagination'
+import ReactPlaceholder from 'react-placeholder';
+import "react-placeholder/lib/reactPlaceholder.css";
+import {TextBlock} from 'react-placeholder/lib/placeholders';
 
+const awesomePlaceholder = (
+  <div className='my-awesome-placeholder'>
+    <TextBlock rows={7} className='' color='rgb(229 231 235)' style={{width: '100%', height: 80}}/>
+    <TextBlock rows={7} className='mt-20' color='rgb(229 231 235)' style={{width: '100%', height: 80}}/>
+    <TextBlock rows={7} className='mt-20' color='rgb(229 231 235)' style={{width: '100%', height: 80}}/>
+  </div>
+);
 const Home = () => {
-  const { items, loading } = useContext(StoreContext)
+  const { loading } = useContext(StoreContext)
 
   return (
-    <div id='main'>
-      <Carousel />
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 mt-20">
-        {loading && items.length === 0 ?
-          [1, 2, 3, 4].map((id) => <Skeleton key={id} height="20px" count={3} />)
-          : items.map(item => <Product key={item.id} product={item}></Product>)}
-      </div> */}
 
-      <Pagination/>
+    <div id='main'>
+      <ReactPlaceholder showLoadingAnimation  type='media' rows={7} ready={!loading} customPlaceholder={awesomePlaceholder}>
+        <Carousel />
+        <Pagination />
+      </ReactPlaceholder>
     </div>
   )
 }
