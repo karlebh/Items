@@ -31,7 +31,7 @@ export default function Checkout(props) {
   return (
     <div className="App">
       <button
-        className={`text-emerald-500 ${props.total === 0 ? 'cursor-not-allowed' : ''}`}
+        className={`text-emerald-500 border-2 p-4 rounded-md bg-gradient-to-r from-yellow-400 to-green-400 font-black ${props.total === 0 ? 'cursor-not-allowed' : ''}`}
         disabled={props.total === 0}
         onClick={() => {
           handleFlutterPayment({
@@ -52,11 +52,11 @@ export default function Checkout(props) {
         Pay with flutterwave
       </button>
       <div className='mt-7'>
-        Use these for payment: <br />
-        Card Number: 5531886652142950 <br />
-        CVV:564 <br />
-        Expiry Date: 09/32
-        OTP: 123456 <br />
+        <h1 className='text-xl font-semibold capitalize'>Use these for payment: </h1><br />
+        <p>Card Number: <span className='text-emerald-600 font-bold'>5531886652142950</span> </p>
+        <p>CVV: <span className='text-emerald-600 font-bold'>564</span> </p>
+        <p> Expiry Date: <span className='text-emerald-600 font-bold'>09/32</span> </p>
+        <p>OTP: <span className='text-emerald-600 font-bold'>123456</span> </p>
       </div>
     </div>
   );
