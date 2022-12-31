@@ -13,7 +13,7 @@ window.gsap = gsap
 function App() {
 
   return (
-    <div className="bg-gradient-to-r from-emerald-700 to-teal-700 max-w-8xl mx-auto">
+    <div className="bg-gradient-to-r from-emerald-700 to-teal-700 max-w-8xl mx-auto n">
       <BrowserRouter>
       <ScrollToTop/>
         <div className="min-h-screen">
