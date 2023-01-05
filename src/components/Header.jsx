@@ -3,27 +3,28 @@ import { Link, useLocation } from 'react-router-dom'
 import NavBar from "./NavBar"
 import { StoreContext } from '../context/StoreContext'
 import { CartContext } from '../context/CartContext'
+import MobileNav from './MobileNav'
 
 const Header = () => {
 
-  const { NavBarOpen, setNavBarOpen, categories } = useContext(StoreContext)
+  const { NavBarOpen, setNavBarOpen } = useContext(StoreContext)
   const { cart } = useContext(CartContext)
   const itemCount = cart.length
   const { pathname } = useLocation()
 
-  const nav = document.getElementById('nav')
+  const nav = document.getElementById("nav")
 
   function toggleMenu() {
-    if (nav.classList.contains('out')) {
-      nav.classList.replace('hidden', 'block')
-      nav.classList.remove('out')
-      nav.classList.add('in')
+    if (nav.classList.contains("out")) {
+      nav.classList.replace("hidden", "block")
+      nav.classList.remove("out")
+      nav.classList.add("in")
       return
     }
-    nav.classList.remove('in')
-    nav.classList.add('out')
+    nav.classList.remove("in")
+    nav.classList.add("out")
     setTimeout(() => {
-      nav.classList.replace('block', 'hidden')
+      nav.classList.replace("block", "hidden")
     }, 200)
   }
 
@@ -82,28 +83,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Nav */}
-      <nav className='inset-0 w-full h-full fixed z-10 hidden out' id='nav'>
-        <div className='flex flex-col bg-gray-300 text-gray-800 h-full w-full overflow-auto pb-20'>
-          <button className='self-end p-4' onClick={toggleMenu}>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-8 h-8 text-gray-900">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          {categories.map((cat, id) => (
-            <Link
-              key={id}
-              className={`font-semibold capitalize  px-3 py-2 border-b-2 border-gray-900 ${pathname.replace('%20', ' ').replace('/', '') === cat ?
-                'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`}
-              to={`/${cat}`}
-              onClick={toggleMenu}
-            >{cat}</Link>))}
-          <Link onClick={toggleMenu} className={`font-semibold capitalize border-b-2 border-gray-900 px-3 py-2
-             ${pathname.replace('%20', ' ').replace('/', '') === 'wishlist' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="wishlist">Wishlist</Link>
-          <Link onClick={toggleMenu} className={`font-semibold capitalize border-b-2 border-gray-900  px-3 py-2
-             ${pathname.replace('%20', ' ').replace('/', '') === 'addProduct' ? 'bg-gradient-to-r from-emerald-400 to-teal-400' : ''}`} to="addProduct">Add product</Link>
-        </div>
-      </nav>
+      <MobileNav toggleMenu={toggleMenu} />
 
     </div>
 
