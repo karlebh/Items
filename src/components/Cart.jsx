@@ -22,12 +22,12 @@ const Cart = () => {
             </h1>
             <button
               onClick={() => setModal(true)}
-              className="hidden lg:inline-flex item-center font-semibold px-3 py-2 bg-gradient-to-l from-emerald-500 to-transparent rounded-lg"
+              className="hidden lg:inline-flex item-center font-semibold px-3 py-2 bg-gradient-to-l from-emerald-500 to-gray-500 rounded-lg"
             >
               <img
                 src="https://cdn.iconscout.com/icon/free/png-256/checkout-1553147-1314013.png"
                 alt=""
-                className="w-5 h-5 mr-2"
+                className="w-5 h-5 mr-2 "
               />
               Checkout
             </button>
@@ -37,7 +37,7 @@ const Cart = () => {
                   .getElementById("checkout")
                   .scrollIntoView({ behavior: "smooth", block: "end" })
               }
-              className="inline-flex lg:hidden item-center font-semibold"
+              className="inline-flex lg:hidden item-center font-semibold bg-gradient-to-l from-emerald-500 to-gray-500 rounded-lg px-3 py-2"
             >
               <img
                 src="https://cdn.iconscout.com/icon/free/png-256/checkout-1553147-1314013.png"
@@ -58,7 +58,7 @@ const Cart = () => {
                     <div className="grid w-full justify-items-center">
                       <img
                         src={item.image}
-                        className="w-full h-56 md:h-56 rounded-md"
+                        className="w-full h-64 md:h-72 rounded-md"
                         alt=""
                       />
                     </div>
