@@ -50,7 +50,7 @@ const Cart = () => {
           <div>
             {cart.length ? (
               cart.map((item, id) => (
-                <div>
+                <div key={id}>
                   <div
                     className="lg:hidden mt-10 grid gap-4 grid-cols-2 items-center  my-4 py-3 bg-stone-800 px-2 relative rounded-md overflow-hidden"
                     key={item.image}
@@ -64,8 +64,8 @@ const Cart = () => {
                     </div>
 
                     <div>
-                      <div className="col-span-2 self-items-left w-full grid">
-                        <p className="flex items-start justify-start">
+                      <div className="col-span-2 self-items-left w-full grid mt-1.5">
+                        <p className="flex items-end justify-start">
                           {item.title}
                         </p>
                         <p className="text-sm font-semibold mt-3 text-emerald-400">

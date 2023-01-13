@@ -31,7 +31,7 @@ export default function Checkout(props) {
   return (
     <div className="App">
       <button
-        className={`text-emerald-500 border-2 p-4 rounded-md bg-gradient-to-r from-yellow-400 to-green-400 font-black ${props.total === 0 ? 'cursor-not-allowed' : ''}`}
+        className={`text-emerald-500 border-2 p-4 button-gradient rounded-md bg-gradient-to-r from-yellow-400 to-green-400 font-black ${props.total === 0 ? 'cursor-not-allowed' : ''}`}
         disabled={props.total === 0}
         onClick={() => {
           handleFlutterPayment({
