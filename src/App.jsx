@@ -9,13 +9,24 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Pages from "./pages/Pages"
 import Notice from "./components/Notice"
-import ScrollToTop from "../helpers/ScrollToTop"
-
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 //added this for deployment
 
 window.gsap = gsap
 
 function App() {
+  
+const ScrollToTop = () => {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
   return (
     <div className="bg-gradient-to-r from-emerald-700 to-gray-600">
       <BrowserRouter>
