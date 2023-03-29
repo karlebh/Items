@@ -9,7 +9,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Pages from "./pages/Pages"
 import Notice from "./components/Notice"
-// import ScrollToTop from "./helpers/ScrollToTop"
+import ScrollToTop from "../helpers/ScrollToTop"
 
 //added this for deployment
 
@@ -23,7 +23,7 @@ function App() {
           <CartContextProvider>
             <WishlistContextProvider>
               <div className="min-h-screen max-w-7xl mx-auto">
-                {/* <ScrollToTop /> */}
+                <ScrollToTop />
                 <Header />
                 <Notice />
                 <main className="p-3 md:p-5 lg:p-6">
