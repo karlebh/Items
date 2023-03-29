@@ -11,6 +11,8 @@ import Pages from "./pages/Pages"
 import Notice from "./components/Notice"
 import ScrollToTop from "./helpers/ScrollToTop"
 
+//added this for deployment
+
 window.gsap = gsap
 
 function App() {
