@@ -19,9 +19,11 @@ const Home = () => {
   return (
 
     <div id='main'>
-      <ReactPlaceholder showLoadingAnimation  type='media' rows={7} ready={!loading} customPlaceholder={awesomePlaceholder}>
+      <ReactPlaceholder showLoadingAnimation  type='media' rows={7} 
+      ready={!loading} customPlaceholder={awesomePlaceholder}>
         <Carousel />
-        <Pagination />
+        {/* {loading || <Pagination />} */}
+        <Pagination/>
       </ReactPlaceholder>
     </div>
   )

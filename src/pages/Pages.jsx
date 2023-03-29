@@ -21,7 +21,6 @@ const Pages = () => {
         nodeRef={nodeRef}
       >
         <Routes location={location}>
-    
           <Route path='/' element={<Home />} />
           <Route path='/addProduct' element={<AddProduct />} />
           <Route path='/pagination' element={<Pagination />} />
